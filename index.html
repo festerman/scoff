@@ -1,0 +1,25 @@
+<head>
+    <script src="scoff.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="init_scoff_test()">
+    <div class="scofftest">
+    <h2>Testa dig själv. Svara på fem frågor.</h2>
+    <p>Undrar du över om du har en ätstörning? Gör ett SCOFF-test, svara ja eller nej på fem frågor.
+        Du gör det för din egen skull och det är helt anonymt.</p>
+
+    <!-- html to emit från shortcode -->
+    <div id="testwrapper">
+        <button id="testopenbutton">Starta testet</button>
+        <div id="test" class="scoff">
+            <div id="question"></div>
+            <div id="summary" hidden></div>
+            <button id="testresetbutton">Gör om testet</button>
+            <button id="testclosebutton">Stäng</button>        
+        </div>
+    </div>
+    <!-- end shortcode -->
+
+</div>
+<p>Text efter testet</p>
+</body>
