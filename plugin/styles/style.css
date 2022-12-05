@@ -1,0 +1,15 @@
+  div#test.scoff {
+    display: inline-block;
+    position: fixed;
+    min-width: 70vw;
+    min-height: 30vh;
+    left: 45%;
+    top: 5%;
+    transform: translate(-50%, 5%);
+    z-index: 1000;
+    background-color: white;
+    border-width: thick;
+    border-style: solid;
+    border-color: black;
+    padding: 20px;
+  }
