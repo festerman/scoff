@@ -14,7 +14,6 @@ Text Domain: scoff
 */
 
 add_shortcode( 'scoff', 'scoff_func' );
-add_action( 'wp_enqueue_scripts', 'scoff_assets' );
 
 function scoff_assets() {
     wp_register_style( 'scoff-button-style', plugins_url( '/styles/style.css' , __FILE__ ) );
@@ -22,6 +21,7 @@ function scoff_assets() {
 
     wp_enqueue_style( 'scoff-button-style' );
     wp_enqueue_script( 'scoff-button-script' );
+
 }
 
 function add_onload() {
@@ -34,9 +34,11 @@ function add_onload() {
     <?php
 }
 
-add_action( 'wp_footer', 'add_onload' );
 
 function scoff_func() {
+    add_action( 'wp_enqueue_scripts', 'scoff_assets' );
+    add_action( 'wp_footer', 'add_onload' );
+
     ob_start();?>
     
     <!-- html to emit från shortcode -->
@@ -51,7 +53,9 @@ function scoff_func() {
     </div>
     <!-- end shortcode -->    
     <?php
+
     return ob_get_clean();
+
 }
 
 ?>

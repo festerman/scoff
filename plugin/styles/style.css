@@ -1,8 +1,8 @@
   div#test.scoff {
     display: inline-block;
     position: fixed;
-    min-width: 70vw;
-    min-height: 30vh;
+    min-width: 60vw;
+    min-height: 20vh;
     left: 45%;
     top: 5%;
     transform: translate(-50%, 5%);
@@ -12,4 +12,11 @@
     border-style: solid;
     border-color: black;
     padding: 20px;
+  }
+
+  .scoff_questiontext,
+  .scoff_resulttext {
+    font-size: x-large;
+    display: block;
+    padding-bottom: 3vh;
   }

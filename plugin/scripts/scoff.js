@@ -5,7 +5,7 @@ function testOpen(event) {
     scoff.answers = new Array(scoff.questions.length);
 
  //   document.getElementById('test').removeAttribute('hidden');
-    document.getElementById('testopenbutton').setAttribute('hidden', true);
+ //   document.getElementById('testopenbutton').setAttribute('hidden', true);
 
     document.getElementById('testopenbutton').removeEventListener('click', testOpen);
 
@@ -22,7 +22,7 @@ function testClose(event) {
     scoff.answers = new Array(scoff.questions.length);
 
 //    document.getElementById('test').setAttribute('hidden', true);
-    document.getElementById('testopenbutton').removeAttribute('hidden');
+//    document.getElementById('testopenbutton').removeAttribute('hidden');
 
     document.getElementById('testopenbutton').addEventListener('click', testOpen);
 
@@ -103,17 +103,20 @@ var SCOFFUI = {
         o.removeAttribute('hidden');
     },
     htmlQuestion: function(i, q) {
-        return '<div id="question' + i + '">' + 
-            '<em>Fråga ' + (i+1) + ' av ' + scoff.questions.length + '</em>' +
-            '<h3>'+ q + '</h3><p/>' + 
+        return '<div id="q' + i + '" class="scoff_question">' + 
+            '<span class="scoff_questioncount">Fråga ' + (i+1) + ' av ' + scoff.questions.length + '</span>' +
+            '<span class="scoff_questiontext">'+ q + '</span>' + 
             '<button name="yes_q' + i + '" onclick="scoff.add_yes_answer(' + i + ');SCOFFUI.displayNext();">Ja</button>' + 
             '<button name="no_q' + i + '" onclick="scoff.add_no_answer(' + i + ');SCOFFUI.displayNext();">Nej</button>' + 
             '</div>';
     },
 
     displayExplanation: function() {
-        var svar = "<em>Du svarade Ja på: " + scoff.score() + " frågor</em><p/>";
-        svar += "<div><h3>" + scoff.explanations.get(scoff.score()) + "</h3></div><p/>";
+        var svar = '<div class="scoff_result">' + 
+            '<span class="scoff_answercount">Du svarade Ja på: ' + scoff.score() + ' frågor</span>' +
+            '<span class="scoff_resulttext">' + scoff.explanations.get(scoff.score()) + "</span>" +
+            '</div><p/>';
+
         this.populateIdWithHTML("summary", svar);
         document.getElementById('question').setAttribute('hidden', 'true');
         document.getElementById('summary').removeAttribute('hidden');
@@ -150,7 +153,7 @@ function init_scoff_test() {
 
 // ... and explanations
     let explanations = new Map();
-    explanations.set(0, 'Det är inte troligt att du har problem med ätande, vikt och figur.');
+    explanations.set(0, 'Det är inte troligt att du har allvarliga problem med ätande, vikt och figur.');
     explanations.set(1, explanations.get(0));
     explanations.set(2, 'Det är ganska troligt att du har problem med ätande, vikt och figur som är tillräckligt allvarliga för att undersökas närmare.');
     explanations.set(3, explanations.get(2));
