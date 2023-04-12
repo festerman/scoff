@@ -14,6 +14,8 @@ Text Domain: scoff
 */
 
 add_shortcode( 'scoff', 'scoff_func' );
+add_action( 'wp_enqueue_scripts', 'scoff_assets' );
+add_action( 'wp_footer', 'add_onload' );
 
 function scoff_assets() {
     wp_register_style( 'scoff-button-style', plugins_url( '/styles/style.css' , __FILE__ ) );
@@ -36,17 +38,15 @@ function add_onload() {
 
 
 function scoff_func() {
-    add_action( 'wp_enqueue_scripts', 'scoff_assets' );
-    add_action( 'wp_footer', 'add_onload' );
 
     ob_start();?>
     
     <!-- html to emit från shortcode -->
     <div id="testwrapper">
         <button id="testopenbutton">Starta testet</button>
-        <div id="test" class="scoff">
+        <div id="test" class="scoff" style="display:none">
             <div id="question"></div>
-            <div id="summary" hidden></div>
+            <div id="summary" style="display:none"></div>
             <button id="testresetbutton">Gör om testet</button>
             <button id="testclosebutton">Stäng</button>        
         </div>

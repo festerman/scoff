@@ -9,7 +9,7 @@ function testOpen(event) {
 
     document.getElementById('testopenbutton').removeEventListener('click', testOpen);
 
-    document.getElementById('question').removeAttribute('hidden');
+    document.getElementById('question').style.display = "block";
     document.getElementById('summary').innerHTML = '';
 
     document.getElementById("test").style.display = "block";
@@ -36,7 +36,7 @@ function testReset(event) {
     currentQuestionNumber = 0;
     scoff.answers = new Array(scoff.questions.length);
 
-    document.getElementById('question').removeAttribute('hidden');
+    document.getElementById('question').style.display = "block";
     document.getElementById('summary').innerHTML = '';
 
     SCOFFUI.displayNext();
@@ -99,8 +99,8 @@ var SCOFFUI = {
     displayQuestion: function(i) {
         var o = document.getElementById('question');
         o.innerHTML = this.htmlQuestion(i, scoff.questions[i]);
-        document.getElementById('summary').setAttribute('hidden', 'true');
-        o.removeAttribute('hidden');
+        document.getElementById('summary').style.display = "none";
+        o.style.display="block";
     },
     htmlQuestion: function(i, q) {
         return '<div id="q' + i + '" class="scoff_question">' + 
@@ -115,11 +115,11 @@ var SCOFFUI = {
         var svar = '<div class="scoff_result">' + 
             '<span class="scoff_answercount">Du svarade Ja på: ' + scoff.score() + ' frågor</span>' +
             '<span class="scoff_resulttext">' + scoff.explanations.get(scoff.score()) + "</span>" +
-            '</div><p/>';
+            '</div>';
 
         this.populateIdWithHTML("summary", svar);
-        document.getElementById('question').setAttribute('hidden', 'true');
-        document.getElementById('summary').removeAttribute('hidden');
+        document.getElementById('question').style.display = "none";
+        document.getElementById('summary').style.display = "block";
     },
     
     populateIdWithHTML: function(id, text) {
@@ -136,10 +136,12 @@ var SCOFFUI = {
 var scoff;
 
 function init_scoff_test() {
-    // event listeners
-    document.getElementById('testopenbutton').addEventListener('click', testOpen);
-    document.getElementById('testclosebutton').addEventListener('click', testClose);
-    document.getElementById('testresetbutton').addEventListener('click', testReset);
+    // event listeners -- only if there's a scoff test on-page:
+    if (document.getElementById('testopenbutton') != null) {
+        document.getElementById('testopenbutton').addEventListener('click', testOpen);
+        document.getElementById('testclosebutton').addEventListener('click', testClose);
+        document.getElementById('testresetbutton').addEventListener('click', testReset);
+    }
 
 /* -------------------------- */
 // Questions ...
