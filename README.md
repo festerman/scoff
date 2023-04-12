@@ -5,5 +5,5 @@ https://en.wikipedia.org/wiki/SCOFF_questionnaire
 
 The repo also contains 
 
-* an index.html file that can be used while testing/developing. *DO NOT INSTALL THIS* into WP.
+* an index.html file that can be used while testing/developing. *DO NOT INSTALL THIS* into WP. After cloning this repo, navigate to file:///your-install-path/index.html. Make sure you do a hard refresh when you've changed the javascript or the style.
 * a shell script to start a WP podman container
