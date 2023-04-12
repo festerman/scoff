@@ -4,5 +4,6 @@ Questions and answers are in Swedish, but it should be simple to translate. Styl
 https://en.wikipedia.org/wiki/SCOFF_questionnaire
 
 The repo also contains 
-    * an index.html file that can be used while testing/developing. *DO NOT INSTALL THIS* into WP.
-    * a shell script to start a WP podman container
+
+* an index.html file that can be used while testing/developing. *DO NOT INSTALL THIS* into WP.
+* a shell script to start a WP podman container
